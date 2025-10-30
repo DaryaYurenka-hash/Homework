@@ -3,4 +3,7 @@
 вернуть значение где первое число возведено в степень второго числа
 
 '''
-print(input(number1 = ""), input(number2 = ""))
+number1 = int(input('number = '))
+number2 = int(input('number = '))
+number1 **= number2
+print(number1)

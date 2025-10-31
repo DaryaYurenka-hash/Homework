@@ -8,9 +8,9 @@
 word1 = input('a = ')
 word2 = input('b = ')
 word3 = input('c = ')
-print('-', word1, word2, word3, sep=' ')
-print('-', word1, word2, word3, sep=':')
-print('-', word1, word2, word3)
+print(word1, word2, word3, sep=' ')
+print(word1, word2, word3, sep=':')
+print('-' , word1, '\n-', word2, '\n-', word3)
 
 
 

@@ -4,3 +4,6 @@
 
 
 '''
+input_word = input('Введите слово - ')
+palindrom = input_word[::-1]
+print(palindrom)

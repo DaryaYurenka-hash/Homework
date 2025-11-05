@@ -12,3 +12,9 @@
 
 '''
 s = "имя: Дмитрий, фамилия: Иванов, возраст: 18"
+words =s.split(',')
+name = words[0].split(':')[1]
+surname = words[1].split(':')[1]
+age = words[2].split(':')[1]
+print(name, surname, age, sep='\n')
+

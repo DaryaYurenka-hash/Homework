@@ -6,3 +6,8 @@
 
 '''
 
+s = "Это тестовая <start>строка для изучения<end> строковых операций"
+start_index = s.find("<start>") + len("<start>")
+end_index = s.find("<end>")
+print(s[start_index:end_index])
+

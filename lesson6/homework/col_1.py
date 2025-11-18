@@ -10,3 +10,14 @@
     - вывести сумму всех товаров
 
 """
+sub1 = input('Введите товар и его стоимость через пробел ').lower().split()
+sub2 = input('Введите товар и его стоимость через пробел ').lower().split()
+sub3 = input('Введите товар и его стоимость через пробел ').lower().split()
+
+product_dictionary = {sub1[0]:sub1[1], sub2[0]:sub2[1], sub3[0]:sub3[1]}
+
+for_search = input('Введите имя товара для поиска в базе данных ').lower()
+price_of_searched = int(product_dictionary.get(for_search))
+print(price_of_searched * 1.15)
+
+

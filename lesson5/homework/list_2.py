@@ -8,11 +8,11 @@
 # Запрашиваем на ввод по порядку 5 имен
 # Копирование строки Shift + Alt + ↓
 
-name1 = input('Введите имя ')
-name2 = input('Введите имя ')
-name3 = input('Введите имя ')
-name4 = input('Введите имя ')
-name5 = input('Введите имя ')
+name1 = str(input('Введите имя ')).lower()
+name2 = str(input('Введите имя ')).lower()
+name3 = str(input('Введите имя ')).lower()
+name4 = str(input('Введите имя ')).lower()
+name5 = str(input('Введите имя ')).lower()
 
 # Создаем пустой список
 l = []
@@ -27,5 +27,5 @@ l.sort()
 print(l)
 
 # Вывести True при наличии в списке имени 'Вася'
-print('Вася' in l)
+print('вася' in l)
 

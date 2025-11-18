@@ -15,4 +15,6 @@ s = list(map(len, l))
 # Выводим список s
 print(s)
 
+print('Hello python')
+
 

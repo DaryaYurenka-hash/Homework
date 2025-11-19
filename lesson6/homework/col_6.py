@@ -17,5 +17,17 @@
     3) 11 44
     
 '''
+# Запрашиваем числа через пробел
+counts1 = set(map(int, input('Введите числа через пробел: ').split()))
+counts2 = set(map(int, input('Введите числа через пробел: ').split()))
+counts3 = set(map(int, input('Введите числа через пробел: ').split()))
 
+# Выводим все уникальные числа по возрастанию
+uniq_counts = counts1.union(counts2, counts3)
+sorted_uniq_counts = sorted(uniq_counts)
 
+common_counts = counts1.intersection(counts2, counts3)
+
+first_line_uniq = counts1.difference(counts2, counts3)
+
+print(f'Уникальные в трех сетах - {uniq_counts}\nОбщие в трех строках - {common_counts}\n Уникаальные из первой строки - {first_line_uniq}')

@@ -6,4 +6,14 @@
 
 """
 
+# Запрос фразы 
+phrase = input('Введите фразу для подсчета количества уникальных значений: ')
 
+# Количество уникальных элементов выявляем с помощью set()
+phrase_uniq_letters = len(set(phrase))
+phrase_uniq_words = len(set(phrase.split()))
+
+print(phrase_uniq_words)
+print(phrase_uniq_letters)
+
+# Как прописать условие для задачи со звездочкой?

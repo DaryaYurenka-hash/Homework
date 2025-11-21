@@ -8,3 +8,14 @@
 в остальных случаях - "доступ запрещен".
 
 '''
+# Запрашиваем логин и пароль у пользователя
+login1 = str(input('Введите логин:'))
+password1 = str(input('Введите пароль:'))
+age1 = input('Введите возраст:')
+
+# Оператор ветвления
+if (login1 == 'admin' and password1 == '123456') or (login1 == 'vasya' and password1 == 'vas123' and age < 60) or (login1 == 'guest'and password1 != '' and age1 > 18) :
+    print('доступ разрешен')
+else:
+    print('доступ запрещен')
+

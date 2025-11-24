@@ -32,3 +32,25 @@ if (isinstance(a1, int) and isinstance(a3, int)) \
     print('True')
 else: 
     print('False')
+
+# Метод решения через any и all (после замечания)
+
+# Проверка дробных 
+if all(isinstance(x, float) for x in (a1, a2, a3, a4)):
+    print('True')
+else:
+    print('False')
+#Проверка строковых пар 
+
+if any(isinstance(x, str) for x in (a1, a2, a3, a4)):
+    print('True')
+else:
+    print('False')
+
+# Проверка целочисленных пар
+if all(isinstance(x, int) for x in (a1,a3)) \
+    or all(isinstance(x, int) for x in (a2,a4)) \
+    or all(isinstance(x, int) for x in (a3,a4)):
+    print('True')
+else: 
+    print('False')

@@ -17,4 +17,43 @@
 eval() exec() нельзя
 """
 
+operators = ["**", "+", "-", "*", "/"] 
+found = False  # Флаг для проверки, найден ли оператор
 
+while True:
+    user_input = input("Введите пример или 'стоп' для завершения: ")
+
+    if user_input.lower() == "стоп":
+        print("Программа завершена.")
+        break
+
+    # Убираем все пробелы
+    user_input = user_input.replace(" ", "")
+
+    for op in operators:
+        if op in user_input:
+            found = True
+            # Разделяем строку на две части по оператору
+            parts = user_input.split(op, 1)
+            
+            if len(parts) != 2:
+                print("Неправильный формат. Пример: '2 + 4'")
+                break
+            # Выполняем операцию
+            if op == "+":
+                print("Ответ:", parts[0] + parts[2])
+            elif op == "-":
+                print("Ответ:", parts[0] - parts[2])
+            elif op == "*":
+                print("Ответ:", parts[0] * parts[2])
+            elif op == "/":
+                if parts[2] == 0:
+                    print("Ошибка: деление на ноль")
+                else:
+                    print("Ответ:", parts[0] / parts[2])
+            elif op == "**":
+                print("Ответ:", parts[0] ** parts[2])
+            break  # После нахождения оператора выходим из цикла for
+
+    if not found:
+        print("Неправильный формат. Пример: '2 + 4'")

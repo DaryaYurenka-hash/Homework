@@ -12,17 +12,15 @@
 review = []
 
 while True:
-    name = input('Введите имя (или "stop" для выхода): ').strip()
+    name = input('Введите имя (или "stop" для выхода): ')
     if name.lower() == 'stop':
         break
 
-    recommendations = input('Оставьте свой отзыв (или "stop" для выхода): ').strip()
+    recommendations = input('Оставьте свой отзыв (или "stop" для выхода): ')
     if recommendations.lower() == 'stop':
         break
 
-    review.append({'name': name, 'recommendations': recommendations})
-
-print(review)
+    review.append({'name': name, 'recommendations': recommendations}) #Заполняем спимсок словариком
 
 # Количество отзывов
 print(f"Количество отзывов: {len(review)}")
@@ -30,11 +28,11 @@ print(f"Количество отзывов: {len(review)}")
 # Имена пользователей
 names = []
 for r in review:
-    names.append(r['name'])
+    names.append(r['name']) #достаем нужную инфу из словарика по ключу и вставляем в список
 print("Имена пользователей:", names)
 
 # Отзывы
 recommendations_list = []
 for r in review:
-    recommendations_list.append(r['recommendations'])
+    recommendations_list.append(r['recommendations']) #достаем нужную инфу из словарика по ключу и вставляем в список
 print("Отзывы пользователей:", recommendations_list)

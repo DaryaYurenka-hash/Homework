@@ -16,9 +16,10 @@
 '''
 s = ['qwertyu','asdfggh','zxcvbnm','yuiop[]','hjklasd','mnbvnbv']
 
-for i in range(len(s)):
-    element = s[i]
+for i in range(len(s)): 
+    element = s[i] #Достаем элемент по индексу i, который находится в рамках длины списка и равен кол-ву итераций цикла
     print(f'{i+1} - {element} - {element[i]}')
+    # Счет начинаем не от 0 индекса, а от 1: {i+1}
     
         
         

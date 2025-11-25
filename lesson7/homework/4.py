@@ -10,3 +10,16 @@
 * - елочка со снегом
 '''
 
+high = input('Введите высоту елочки от 3 до 20: ')
+
+if high.isdigit():
+   if int(high) >= 3 and int(high) <= 20:
+      h =int(high)
+      for i in range(1, h+1):
+         star = '*' * (2 * i - 1)
+         space = ' ' * (h-i)
+         print(space + star)
+   else:
+      print('Введите высоту ёлочки в диапазоне от 3 до 20')
+else: 
+     print('Введите число')

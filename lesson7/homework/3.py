@@ -4,4 +4,18 @@
 Алфавит считаем от 0. a-0, b-1, c-3 и т.д.
 Например: 13520 -> bdfca.
 '''
+# Задаем строчку с алфавитом
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+# Число для ввода и транскрипции
+num = input('Введите любое число: ')
+
+# Проверка на то, состоит ли строка из цифр
+if num.isdigit():
+    trancription = ''
+    for n in num: # Ищем через срезы для каждой цифры букву
+        trancription += alphabet[int(n)] # заполняем строку 
+    print(trancription)    
+else:
+    print('Введите в строку только цифры без пробелов')    
 

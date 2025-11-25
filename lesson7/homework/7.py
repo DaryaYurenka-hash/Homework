@@ -4,5 +4,16 @@
 Например: дано 236 => 2*2 + 3*3 + 6*6 = 49 
 
 """
+number = input('Введите число: ')
 
+if number.isdigit():
+    if int(number) >= 10:
+        new_num = 0 #Задали новое число для вывода
+        for i in number:
+            new_num += int(i)**2 #Каждую цифру возвели в квадрат
+    else: 
+        print('Число должно быть не менее 10')
+else:
+    print('Введите число')        
 
+print(f'Сумма квадратов цифр числа {number} - {new_num}')

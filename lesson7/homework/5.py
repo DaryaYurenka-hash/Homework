@@ -14,3 +14,11 @@
 
 
 '''
+s = ['qwertyu','asdfggh','zxcvbnm','yuiop[]','hjklasd','mnbvnbv']
+
+for i in range(len(s)):
+    element = s[i]
+    print(f'{i+1} - {element} - {element[i]}')
+    
+        
+        

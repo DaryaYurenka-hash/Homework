@@ -17,6 +17,14 @@
 eval() exec() нельзя
 """
 
+# bad_symbol = "!@#$%^&*()"
+# login = 'Vasya123@!'
+# for s in login:
+#     if s in bad_symbol:
+#         print("errr", s)
+#     # print(s)
+
+
 operators = ["**", "+", "-", "*", "/"] 
 found = False  # Флаг для проверки, найден ли оператор
 

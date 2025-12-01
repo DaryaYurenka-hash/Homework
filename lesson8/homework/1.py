@@ -8,7 +8,7 @@
 
 
 """
-
+ 
 def namesurname(fio: str, param: str = 'iof'):
     if not isinstance(fio, str):
         raise TypeError("Неправильный тип данных. Введите текст.")

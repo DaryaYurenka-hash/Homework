@@ -16,3 +16,17 @@ print(c10()) -> 12
 print(c10()) -> 13 
 
 """
+def counter(position):
+    count_of = position
+    def counter_of_starts():
+        nonlocal count_of #позволяет внутренней функции изменять переменные, объявленные во внешней функции
+        #без nonlocal изменить нельзя — Python считает, что переменная во внутренней функции локальная, и выдаст ошибку
+        count_of += 1
+        return count_of
+    return counter_of_starts # возвращаем внутреннюю функцию во внешней, что и является смыслом замыкания
+
+
+a1 = counter(4) #a1 становится функцией counter_of_starts()
+c5 = counter(12)
+print(a1())
+print(c5())

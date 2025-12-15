@@ -23,7 +23,7 @@
 
 # Создаем класс Student
 class Student():
-    def __init__(self, surname, name, group, grads):
+    def __init__(self, surname, name, group, grads = []):
         self.surname = surname
         self.name = name
         self.group = group

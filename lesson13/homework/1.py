@@ -37,6 +37,7 @@
 import string
 import random
 from datetime import datetime, timedelta
+import re
 
 class User:
 	def __init__(self, name: str, login, password:str = None):
@@ -58,10 +59,17 @@ class User:
 			length = random.randint(4, 5)  # меньше 6 символов
 			chars = string.ascii_letters + string.digits
 			pwd = ''.join(random.choices(chars, k=length))
-			if (any(ch.islower() for ch in pwd) and any(ch.isupper() for ch in pwd) and any(ch.isdigit() for ch in pwd)):
+
+			# Без применения re
+			# if (any(ch.islower() for ch in pwd) and any(ch.isupper() for ch in pwd) and any(ch.isdigit() for ch in pwd)):
+			#     return pwd
+
+			# С применением re
+			if (re.search(r'[a-z]', pwd) and 
+				re.search(r'[A-Z]', pwd) and 
+				re.search(r'\d', pwd)):
 				return pwd
-			
-	# Параметр имени
+
 	@property
 	def name(self):
 		return self._name
@@ -69,19 +77,21 @@ class User:
 	@name.setter
 	def name(self, value):
 		if not isinstance(value, str):
-			raise TypeError('Введите имя типа string.')
-        
-		if not value.isalpha():
-			raise ValueError('Введите имя, состоящее только из букв.')
-        
-		russian_letters = set('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
-        
-		if not all(ch in russian_letters for ch in value.lower()):
-			raise ValueError('Имя должно состоять из символов кириллицы')
-		
+			raise TypeError('Имя должно быть строкой.')
+
+		# Без применения re
+		# if not value.isalpha():
+		#     raise ValueError('Введите имя, состоящее только из букв.')
+		# russian_letters = set('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
+		# if not all(ch in russian_letters for ch in value.lower()):
+		#     raise ValueError('Имя должно состоять из символов кириллицы')
+
+		# С применением re
+		if not re.fullmatch(r'[А-Яа-яЁё]+', value):
+			raise ValueError('Имя должно состоять только из букв кириллицы')
+
 		self._name = value
 
-	# Параметр логина
 	@property
 	def login(self):
 		return self._login
@@ -89,19 +99,21 @@ class User:
 	@login.setter
 	def login(self, value):
 		if not isinstance(value, str):
-			raise TypeError('Введите имя типа string.')
+			raise TypeError('Логин должен быть строкой.')
 
-		if len(value) < 6:
-			raise ValueError('Длина логина должна быть не менее 6 символов.')
+		# Без применения re
+		# if len(value) < 6:
+		#     raise ValueError('Длина логина должна быть не менее 6 символов.')
+		# allowed_chars = set(string.ascii_letters + '_' + string.digits)
+		# if not all(ch in allowed_chars for ch in value):
+		#     raise ValueError('Логин должен состоять из латинских букв, допускается нижнее подчеркивание "_".')
 
-		allowed_chars = set(string.ascii_letters + '_' + string.digits)
+		# С применением re
+		if not re.fullmatch(r'[A-Za-z0-9_]{6,}', value):
+			raise ValueError('Логин должен содержать минимум 6 символов: латиница, цифры и "_"')
 
-		if not all(ch in allowed_chars for ch in value):
-			raise ValueError('Логин должен состоять из латинских букв, допускается нижнее подчеркивание "_".')
-		
 		self._login = value
 
-	# Параметр пароля
 	@property
 	def password(self):
 		return self._password
@@ -109,28 +121,35 @@ class User:
 	@password.setter
 	def password(self, value):
 		if not isinstance(value, str):
-			raise TypeError('Введите пароль типа string.')
-        
-		if not value.isalnum():
-			raise ValueError('Введите пароль, состоящий только из букв и цифр.')
-		
-		allowed = (string.ascii_letters + string.digits)
+			raise TypeError('Пароль должен быть строкой.')
 
-		if not all(ch in allowed for ch in value):
-			raise ValueError('Пароль должен состоять только из латинских букв и цифр.')
-		
-		if not any(ch.isupper() for ch in value):
-			raise ValueError('Введите хотя бы 1 заглавную букву.')
-		
-		if not any(ch.islower() for ch in value):
-			raise ValueError('Введите хотя бы 1 строчную букву.')
-		
-		if not any(ch.isdigit() for ch in value):
-			raise ValueError('Введите хотя бы 1 число.')
-		
+		# Без применения re
+		# if not value.isalnum():
+		#     raise ValueError('Введите пароль, состоящий только из букв и цифр.')
+		# allowed = string.ascii_letters + string.digits
+		# if not all(ch in allowed for ch in value):
+		#     raise ValueError('Пароль должен состоять только из латинских букв и цифр.')
+		# if not any(ch.isupper() for ch in value):
+		#     raise ValueError('Введите хотя бы 1 заглавную букву.')
+		# if not any(ch.islower() for ch in value):
+		#     raise ValueError('Введите хотя бы 1 строчную букву.')
+		# if not any(ch.isdigit() for ch in value):
+		#     raise ValueError('Введите хотя бы 1 число.')
+		# if len(value) >= 6:
+		#     raise ValueError('Длина должна быть менее 6 символов.')
+
+		# С применением re
 		if len(value) >= 6:
-			raise ValueError('Длина должна быть менее 6 символов.')
-		
+			raise ValueError('Пароль должен содержать менее 6 символов.')
+		if not re.fullmatch(r'[A-Za-z0-9]+', value):
+			raise ValueError('Пароль может содержать только латинские буквы и цифры.')
+		if not re.search(r'[A-Z]', value):
+			raise ValueError('Пароль должен содержать хотя бы одну заглавную букву.')
+		if not re.search(r'[a-z]', value):
+			raise ValueError('Пароль должен содержать хотя бы одну строчную букву.')
+		if not re.search(r'\d', value):
+			raise ValueError('Пароль должен содержать хотя бы одну цифру.')
+
 		self._password = value
 
 	def bloc(self, flag: bool):
